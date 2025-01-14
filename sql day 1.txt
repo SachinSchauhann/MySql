@@ -1,0 +1,348 @@
+create table student(
+sid int primary key,
+name varchar(45),
+ enroll varchar(45),
+ per float
+ );
+
+
+create table student(
+    sid int primary key,
+    name varchar(45),
+    enroll varchar(45),
+    per float
+    );
+
+
+
+
+
+
+
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.40 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> Create database jain13;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> use jan13;
+ERROR 1049 (42000): Unknown database 'jan13'
+mysql> drop databases jain13;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databases jain13' at line 1
+mysql> drop database jain13;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> Create database jan13;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use jan13;
+Database changed
+mysql> create table student(
+    ->     sid int primary key,
+    ->     name varchar(45),
+    ->     enroll varchar(45),
+    ->     per float
+    ->     );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sid    | int         | NO   | PRI | NULL    |       |
+| name   | varchar(45) | YES  |     | NULL    |       |
+| enroll | varchar(45) | YES  |     | NULL    |       |
+| per    | float       | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+mysql> alter table student add column p int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student add column m int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student add column h int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student add column e int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student add column total int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sid    | int         | NO   | PRI | NULL    |       |
+| name   | varchar(45) | YES  |     | NULL    |       |
+| enroll | varchar(45) | YES  |     | NULL    |       |
+| per    | float       | YES  |     | NULL    |       |
+| p      | int         | YES  |     | NULL    |       |
+| m      | int         | YES  |     | NULL    |       |
+| h      | int         | YES  |     | NULL    |       |
+| e      | int         | YES  |     | NULL    |       |
+| total  | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> insert into student value(101, 'sachin' , '0111CS211150' , 7.9, 98,89,84,75,346);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  7.9 |   98 |   89 |   84 |   75 |   346 |
++-----+--------+--------------+------+------+------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> Alter table student drop column total;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    |
++-----+--------+--------------+------+------+------+------+------+
+| 101 | sachin | 0111CS211150 |  7.9 |   98 |   89 |   84 |   75 |
++-----+--------+--------------+------+------+------+------+------+
+1 row in set (0.00 sec)
+
+mysql> alter table student add column total int;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  7.9 |   98 |   89 |   84 |   75 |  NULL |
++-----+--------+--------------+------+------+------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> Create table student1 as select * from student;
+Query OK, 1 row affected (0.02 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++-----------------+
+| Tables_in_jan13 |
++-----------------+
+| student         |
+| student1        |
++-----------------+
+2 rows in set (0.01 sec)
+
+mysql> update student set name=&#39;kartik&#39;,enroll=&#39;0176CS3&#39; where
+    -> show tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '&
+show tables' at line 1
+mysql> update student set total=342; where sid=101;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where sid=101' at line 1
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  7.9 |   98 |   89 |   84 |   75 |   342 |
++-----+--------+--------------+------+------+------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into student(sid,name,enroll) value(102,'deepak','IITB26CS025')
+    -> insert into student(sid,name,enroll) value(102,'deepak','IITB26CS025');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into student(sid,name,enroll) value(102,'deepak','IITB26CS025')' at line 2
+mysql> insert into student(sid,name,enroll) value(102,'deepak','IITB26CS025');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  7.9 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | IITB26CS025  | NULL | NULL | NULL | NULL | NULL |  NULL |
++-----+--------+--------------+------+------+------+------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> update student set enroll=IITB26CS0025; where sid=101;
+ERROR 1054 (42S22): Unknown column 'IITB26CS0025' in 'field list'
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where sid=101' at line 1
+mysql> update student set enroll='IITB26CS0025'; where sid=102;
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where sid=102' at line 1
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | IITB26CS0025 |  7.9 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | IITB26CS0025 | NULL | NULL | NULL | NULL | NULL |  NULL |
++-----+--------+--------------+------+------+------+------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> update student set enroll='0111CS211150'; where sid=101;
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where sid=101' at line 1
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  7.9 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | NULL | NULL | NULL | NULL | NULL |  NULL |
++-----+--------+--------------+------+------+------+------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student(sid,name,enroll) value(103,'ROHIT','IITB26CS026');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student value(104, 'utsav' , '0111CS211151' , 8.9, 88,79,44,70,345);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  7.9 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | NULL | NULL | NULL | NULL | NULL |  NULL |
+| 103 | ROHIT  | IITB26CS026  | NULL | NULL | NULL | NULL | NULL |  NULL |
+| 104 | utsav  | 0111CS211151 |  8.9 |   88 |   79 |   44 |   70 |   345 |
++-----+--------+--------------+------+------+------+------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update student set per=7.88; where sid=103;
+Query OK, 4 rows affected (0.01 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where sid=103' at line 1
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 | 7.88 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 103 | ROHIT  | IITB26CS026  | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 104 | utsav  | 0111CS211151 | 7.88 |   88 |   79 |   44 |   70 |   345 |
++-----+--------+--------------+------+------+------+------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> Select sid,name,enroll,per,total from student;
++-----+--------+--------------+------+-------+
+| sid | name   | enroll       | per  | total |
++-----+--------+--------------+------+-------+
+| 101 | sachin | 0111CS211150 | 7.88 |   342 |
+| 102 | deepak | 0111CS211150 | 7.88 |  NULL |
+| 103 | ROHIT  | IITB26CS026  | 7.88 |  NULL |
+| 104 | utsav  | 0111CS211151 | 7.88 |   345 |
++-----+--------+--------------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student value(105, 'utsav' , '0111CS211151' , 8.9, 88,79,44,70,345);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 | 7.88 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 103 | ROHIT  | IITB26CS026  | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 104 | utsav  | 0111CS211151 | 7.88 |   88 |   79 |   44 |   70 |   345 |
+| 105 | utsav  | 0111CS211151 |  8.9 |   88 |   79 |   44 |   70 |   345 |
++-----+--------+--------------+------+------+------+------+------+-------+
+5 rows in set (0.00 sec)
+
+mysql> Delete from student where sid=105;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 | 7.88 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 103 | ROHIT  | IITB26CS026  | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 104 | utsav  | 0111CS211151 | 7.88 |   88 |   79 |   44 |   70 |   345 |
++-----+--------+--------------+------+------+------+------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update student
+    -> SET per = 8.9
+    -> WHERE sid=101;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  8.9 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 103 | ROHIT  | IITB26CS026  | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 104 | utsav  | 0111CS211151 | 7.88 |   88 |   79 |   44 |   70 |   345 |
++-----+--------+--------------+------+------+------+------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update student
+    -> SET per = 8.45
+    -> WHERE sid=104;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  8.9 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 103 | ROHIT  | IITB26CS026  | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 104 | utsav  | 0111CS211151 | 8.45 |   88 |   79 |   44 |   70 |   345 |
++-----+--------+--------------+------+------+------+------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql>  update student set per=9.88 where sid=103;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-----+--------+--------------+------+------+------+------+------+-------+
+| sid | name   | enroll       | per  | p    | m    | h    | e    | total |
++-----+--------+--------------+------+------+------+------+------+-------+
+| 101 | sachin | 0111CS211150 |  8.9 |   98 |   89 |   84 |   75 |   342 |
+| 102 | deepak | 0111CS211150 | 7.88 | NULL | NULL | NULL | NULL |  NULL |
+| 103 | ROHIT  | IITB26CS026  | 9.88 | NULL | NULL | NULL | NULL |  NULL |
+| 104 | utsav  | 0111CS211151 | 8.45 |   88 |   79 |   44 |   70 |   345 |
++-----+--------+--------------+------+------+------+------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql>
+
+
