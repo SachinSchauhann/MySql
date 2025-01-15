@@ -1,0 +1,318 @@
+create table Employee(
+Emp_No int primary key,
+Name varchar(45),
+Gender char(6),
+Salary float,
+Job_Title varchar(45),
+Hire_Date date,
+Community varchar(10),
+Department_No int
+);
+
+
+
+insert into Employee value(001,'Divyanshu Patel','Male',50000,'Software Engineer','2025-01-15','AB01',1001);
+
+
+
+update Employee
+set Salary=90500
+where Emp_No=2;
+
+update Employee
+set Name='Rohit'
+where Emp_No=2;
+
+
+
+
+
+
+
+
+
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.40 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use jan13;
+Database changed
+mysql> create table Employee(
+    -> Emp_No int primary key,
+    -> Name varchar,
+    -> Gender char(6),
+    -> Salary float,
+    -> Job_Title varchar(45),
+    -> Hire_Date date,
+    -> Community varchar(10),
+    -> Department_No int
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+Gender char(6),
+Salary float,
+Job_Title varchar(45),
+Hire_Date date,
+Community' at line 3
+mysql> desc Employee;
+ERROR 1146 (42S02): Table 'jan13.employee' doesn't exist
+mysql> create table Employee(
+    -> Emp_No int primary key,
+    -> Name varchar(45),
+    -> Gender char(6),
+    -> Salary float,
+    -> Job_Title varchar(45),
+    -> Hire_Date date,
+    -> Community varchar(10),
+    -> Department_No int
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc Employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Emp_No        | int         | NO   | PRI | NULL    |       |
+| Name          | varchar(45) | YES  |     | NULL    |       |
+| Gender        | char(6)     | YES  |     | NULL    |       |
+| Salary        | float       | YES  |     | NULL    |       |
+| Job_Title     | varchar(45) | YES  |     | NULL    |       |
+| Hire_Date     | date        | YES  |     | NULL    |       |
+| Community     | varchar(10) | YES  |     | NULL    |       |
+| Department_No | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> insert into Employee value(001,'Divyanshu Patel','Male',50000,'Software Engineer',2025-01-15,'AB01',1001);
+ERROR 1292 (22007): Incorrect date value: '2009' for column 'Hire_Date' at row 1
+mysql> insert into Employee value(001,'Divyanshu Patel','Male',50000,'Software Engineer','2025-01-15','AB01',1001);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Employee;
++--------+-----------------+--------+--------+-------------------+------------+-----------+---------------+
+| Emp_No | Name            | Gender | Salary | Job_Title         | Hire_Date  | Community | Department_No |
++--------+-----------------+--------+--------+-------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel | Male   |  50000 | Software Engineer | 2025-01-15 | AB01      |          1001 |
++--------+-----------------+--------+--------+-------------------+------------+-----------+---------------+
+1 row in set (0.00 sec)
+
+mysql> insert into Employee value(002,'Ankita Patel','Female',45000,'Software Engineer','2025-01-11','AB01',1002);;
+Query OK, 1 row affected (0.04 sec)
+
+ERROR:
+No query specified
+
+mysql> insert into Employee value(003,'Dipika Chauhan','Female',35000,'Asst Software Engineer','2025-01-01','AF01',1003);;
+Query OK, 1 row affected (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> insert into Employee value(004,'Roshan Chauhan','Male',35500,'Asst Software Engineer','2025-01-01','AF01',1003);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee value(005,'Rajesh Chauhan','Male',35500,'Asst Software Engineer','2025-01-01','AF01',1003);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Employee value(006,'Raj Singh Chauhan','Male',75000,'Software Engineer','2024-11-21','CA01',1005);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Employee value(007,'Sachin Singh Chauhan','Male',75000,'Software Engineer','2024-11-21','CA01',1005);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee value(008,'Mahesh Rajput','Male',75000,'Software Engineer','2024-11-21','CA01',1005);,1005
+Query OK, 1 row affected (0.00 sec)
+
+    -> insert into Employee value(008,'Mahesh Rajput','Male',75000,'Software Engineer','2024-11-21','CA01',1005);,1005
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',1005
+insert into Employee value(008,'Mahesh Rajput','Male',75000,'Software Engi' at line 1
+    -> select * from Employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',1005
+select * from Employee' at line 1
+mysql> select * from Employee;
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+| Emp_No | Name                 | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel      | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |
+|      2 | Ankita Patel         | Female |  45000 | Software Engineer      | 2025-01-11 | AB01      |          1002 |
+|      3 | Dipika Chauhan       | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      4 | Roshan Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      5 | Rajesh Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      6 | Raj Singh Chauhan    | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      7 | Sachin Singh Chauhan | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      8 | Mahesh Rajput        | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+8 rows in set (0.00 sec)
+
+mysql> insert into Employee value(009,'Radha','Female',25000,'Electric Engineer','2024-12-22','EE05',1010);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Employee value(010,'Kavita Rai','Female',25000,'Electric Engineer','2024-12-22','EE05',1010);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee value(011,'Savitri','Female',15000,'Civil Engineer','2024-12-22','CC02',1015);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee value(012,'Sahil Yadav','Male',15000,'Civil Engineer','2024-12-22','CC02',1015);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Employee value(013,'Satish Singh','Male',15000,'Mechanical Engineer','2024-12-22','ME02',1020);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Employee value(014,'Rafeek Ahmad','Male',15000,'Mechanical Engineer','2024-12-22','ME02',1020);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee value(015,'Dulari Devi','Female',8000,'Peon','2024-05-27','PC01',5025);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Employee;
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+| Emp_No | Name                 | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel      | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |
+|      2 | Ankita Patel         | Female |  45000 | Software Engineer      | 2025-01-11 | AB01      |          1002 |
+|      3 | Dipika Chauhan       | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      4 | Roshan Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      5 | Rajesh Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      6 | Raj Singh Chauhan    | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      7 | Sachin Singh Chauhan | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      8 | Mahesh Rajput        | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      9 | Radha                | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     10 | Kavita Rai           | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     11 | Savitri              | Female |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     12 | Sahil Yadav          | Male   |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     13 | Satish Singh         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     14 | Rafeek Ahmad         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     15 | Dulari Devi          | Female |   8000 | Peon                   | 2024-05-27 | PC01      |          5025 |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+15 rows in set (0.00 sec)
+
+mysql> update Employee set Name=Renu Maurya where Emp_No=11;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Maurya where Emp_No=11' at line 1
+mysql> update Employee set Name=Renu Maurya, where Emp_No=11;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Maurya, where Emp_No=11' at line 1
+mysql> update Employee set Name=Renu where Emp_No=11;
+ERROR 1054 (42S22): Unknown column 'Renu' in 'field list'
+mysql> update Employee
+    -> set Name=Renu
+    -> where Emp_No=11;
+ERROR 1054 (42S22): Unknown column 'Renu' in 'field list'
+mysql> select * from Employee;
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+| Emp_No | Name                 | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel      | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |
+|      2 | Ankita Patel         | Female |  45000 | Software Engineer      | 2025-01-11 | AB01      |          1002 |
+|      3 | Dipika Chauhan       | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      4 | Roshan Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      5 | Rajesh Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      6 | Raj Singh Chauhan    | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      7 | Sachin Singh Chauhan | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      8 | Mahesh Rajput        | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      9 | Radha                | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     10 | Kavita Rai           | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     11 | Savitri              | Female |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     12 | Sahil Yadav          | Male   |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     13 | Satish Singh         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     14 | Rafeek Ahmad         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     15 | Dulari Devi          | Female |   8000 | Peon                   | 2024-05-27 | PC01      |          5025 |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+15 rows in set (0.00 sec)
+
+mysql> update Employee
+    -> set Name=Rohit
+    -> where Emp_No=2;
+ERROR 1054 (42S22): Unknown column 'Rohit' in 'field list'
+mysql> update Employee
+    -> set Salary=90500
+    -> where Emp_No=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Employee;
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+| Emp_No | Name                 | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel      | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |
+|      2 | Ankita Patel         | Female |  90500 | Software Engineer      | 2025-01-11 | AB01      |          1002 |
+|      3 | Dipika Chauhan       | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      4 | Roshan Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      5 | Rajesh Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      6 | Raj Singh Chauhan    | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      7 | Sachin Singh Chauhan | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      8 | Mahesh Rajput        | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      9 | Radha                | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     10 | Kavita Rai           | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     11 | Savitri              | Female |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     12 | Sahil Yadav          | Male   |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     13 | Satish Singh         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     14 | Rafeek Ahmad         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     15 | Dulari Devi          | Female |   8000 | Peon                   | 2024-05-27 | PC01      |          5025 |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+15 rows in set (0.00 sec)
+
+mysql> update Employee
+    -> set Salary=90500
+    -> where Emp_No=7;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Employee;
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+| Emp_No | Name                 | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel      | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |
+|      2 | Ankita Patel         | Female |  90500 | Software Engineer      | 2025-01-11 | AB01      |          1002 |
+|      3 | Dipika Chauhan       | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      4 | Roshan Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      5 | Rajesh Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      6 | Raj Singh Chauhan    | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      7 | Sachin Singh Chauhan | Male   |  90500 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      8 | Mahesh Rajput        | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      9 | Radha                | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     10 | Kavita Rai           | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     11 | Savitri              | Female |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     12 | Sahil Yadav          | Male   |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     13 | Satish Singh         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     14 | Rafeek Ahmad         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     15 | Dulari Devi          | Female |   8000 | Peon                   | 2024-05-27 | PC01      |          5025 |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+15 rows in set (0.00 sec)
+
+mysql> update Employee
+    -> set Name='Rohit'
+    -> where Emp_No=2;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Employee;
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+| Emp_No | Name                 | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel      | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |
+|      2 | Rohit                | Female |  90500 | Software Engineer      | 2025-01-11 | AB01      |          1002 |
+|      3 | Dipika Chauhan       | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      4 | Roshan Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      5 | Rajesh Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      6 | Raj Singh Chauhan    | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      7 | Sachin Singh Chauhan | Male   |  90500 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      8 | Mahesh Rajput        | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      9 | Radha                | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     10 | Kavita Rai           | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     11 | Savitri              | Female |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     12 | Sahil Yadav          | Male   |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     13 | Satish Singh         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     14 | Rafeek Ahmad         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     15 | Dulari Devi          | Female |   8000 | Peon                   | 2024-05-27 | PC01      |          5025 |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+15 rows in set (0.00 sec)
+
+mysql>
