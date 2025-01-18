@@ -1,0 +1,205 @@
+
+
+create table Department(
+Department_No int primary key,
+Department_Name varchar(45),
+Location varchar(45)
+);
+
+
+insert into Department value(1001,'Computer','Bhopal');
+insert into Department value(1003,'Mechanical','Indore');
+insert into Department value(1015,'Civil','Basti');
+insert into Department value(5025,'Servent','Gonda');
+
+
+
+
+
+
+
+
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.40 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use jan13;
+Database changed
+mysql> select * from Employee;
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+| Emp_No | Name                 | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+|      1 | Divyanshu Patel      | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |
+|      2 | Rohit                | Male   |  90500 | Software Engineer      | 2025-01-11 | AB01      |          1002 |
+|      3 | Dipika Chauhan       | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      4 | Roshan Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      5 | Rajesh Chauhan       | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |
+|      6 | Raj Singh Chauhan    | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      7 | Sachin Singh Chauhan | Male   |  90500 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      8 | Mahesh Rajput        | Male   |  75000 | Software Engineer      | 2024-11-21 | CA01      |          1005 |
+|      9 | Radha                | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     10 | Kavita Rai           | Female |  25000 | Electric Engineer      | 2024-12-22 | EE05      |          1010 |
+|     11 | Savitri              | Female |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     12 | Sahil Yadav          | Male   |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |
+|     13 | Satish Singh         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     14 | Rafeek Ahmad         | Male   |  15000 | Mechanical Engineer    | 2024-12-22 | ME02      |          1020 |
+|     15 | Dulari Devi          | Female |   8000 | Peon                   | 2024-05-27 | PC01      |          5025 |
++--------+----------------------+--------+--------+------------------------+------------+-----------+---------------+
+15 rows in set (0.00 sec)
+
+mysql> select Job_Title, count(Job_Title) from Employee by Job_Title;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by Job_Title' at line 1
+mysql> select Job_Title, count(Job_Title) from Employee group by Job_Title;
++------------------------+------------------+
+| Job_Title              | count(Job_Title) |
++------------------------+------------------+
+| Software Engineer      |                5 |
+| Asst Software Engineer |                3 |
+| Electric Engineer      |                2 |
+| Civil Engineer         |                2 |
+| Mechanical Engineer    |                2 |
+| Peon                   |                1 |
++------------------------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> select Job_Title, count(Job_Title) from Employee group by Job_Title having count(*)<=3;
++------------------------+------------------+
+| Job_Title              | count(Job_Title) |
++------------------------+------------------+
+| Asst Software Engineer |                3 |
+| Electric Engineer      |                2 |
+| Civil Engineer         |                2 |
+| Mechanical Engineer    |                2 |
+| Peon                   |                1 |
++------------------------+------------------+
+5 rows in set (0.01 sec)
+
+mysql> select Department_No, sum(Salary) from Employee group by Department having sum(Salary)>50000;
+ERROR 1054 (42S22): Unknown column 'Department' in 'group statement'
+mysql> select Department_No, sum(Salary) from Employee group by Department_No having sum(Salary)>50000;
++---------------+-------------+
+| Department_No | sum(Salary) |
++---------------+-------------+
+|          1002 |       90500 |
+|          1003 |      106000 |
+|          1005 |      240500 |
++---------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> desc Department_No;
+ERROR 1146 (42S02): Table 'jan13.department_no' doesn't exist
+mysql> create table Department(
+    -> Department_No int primary key,
+    -> Department_Name varchar(45),
+    -> Location varchar(45)
+    -> );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc Department;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| Department_No   | int         | NO   | PRI | NULL    |       |
+| Department_Name | varchar(45) | YES  |     | NULL    |       |
+| Location        | varchar(45) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+3 rows in set (0.05 sec)
+
+mysql> insert into Employee(1001,Computer,Bhopal);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1001,Computer,Bhopal)' at line 1
+mysql> insert into Employee(1003,Mechanical,Indore);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1003,Mechanical,Indore)' at line 1
+mysql> insert into Employee(1015,Civil,Basti);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1015,Civil,Basti)' at line 1
+mysql> insert into Department(1001,Computer,Bhopal);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1001,Computer,Bhopal)' at line 1
+mysql> insert into Department(1003,Mechanical,Indore);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1003,Mechanical,Indore)' at line 1
+mysql> insert into Department(1015,Civil,Basti);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1015,Civil,Basti)' at line 1
+mysql> insert into Department(5025,Servent,Gonda);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5025,Servent,Gonda)' at line 1
+mysql> insert into Department(1001,'Computer','Bhopal');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1001,'Computer','Bhopal')' at line 1
+mysql> insert into Department(1003,'Mechanical','Indore');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1003,'Mechanical','Indore')' at line 1
+mysql> insert into Department(1015,'Civil','Basti');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1015,'Civil','Basti')' at line 1
+mysql> insert into Department(5025,'Servent','Gonda');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5025,'Servent','Gonda')' at line 1
+mysql> insert into Department value(1001,'Computer','Bhopal');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Department value(1003,'Mechanical','Indore');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Department value(1015,'Civil','Basti');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Department value(5025,'Servent','Gonda');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Department;
++---------------+-----------------+----------+
+| Department_No | Department_Name | Location |
++---------------+-----------------+----------+
+|          1001 | Computer        | Bhopal   |
+|          1003 | Mechanical      | Indore   |
+|          1015 | Civil           | Basti    |
+|          5025 | Servent         | Gonda    |
++---------------+-----------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from Employee inner join Department on Employee=Department_No;
+ERROR 1054 (42S22): Unknown column 'Employee' in 'on clause'
+mysql> select * from Employee inner join Department on Employee.Department_No=Department_No;
+ERROR 1052 (23000): Column 'Department_No' in on clause is ambiguous
+mysql> select * from Employee inner join Department on Employee.Department_No=Department.Department_No;
++--------+-----------------+--------+--------+------------------------+------------+-----------+---------------+---------------+-----------------+----------+
+| Emp_No | Name            | Gender | Salary | Job_Title              | Hire_Date  | Community | Department_No | Department_No | Department_Name | Location |
++--------+-----------------+--------+--------+------------------------+------------+-----------+---------------+---------------+-----------------+----------+
+|      1 | Divyanshu Patel | Male   |  50000 | Software Engineer      | 2025-01-15 | AB01      |          1001 |          1001 | Computer        | Bhopal   |
+|      3 | Dipika Chauhan  | Female |  35000 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |          1003 | Mechanical      | Indore   |
+|      4 | Roshan Chauhan  | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |          1003 | Mechanical      | Indore   |
+|      5 | Rajesh Chauhan  | Male   |  35500 | Asst Software Engineer | 2025-01-01 | AF01      |          1003 |          1003 | Mechanical      | Indore   |
+|     11 | Savitri         | Female |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |          1015 | Civil           | Basti    |
+|     12 | Sahil Yadav     | Male   |  15000 | Civil Engineer         | 2024-12-22 | CC02      |          1015 |          1015 | Civil           | Basti    |
+|     15 | Dulari Devi     | Female |   8000 | Peon                   | 2024-05-27 | PC01      |          5025 |          5025 | Servent         | Gonda    |
++--------+-----------------+--------+--------+------------------------+------------+-----------+---------------+---------------+-----------------+----------+
+7 rows in set (0.01 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
