@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+    
+}
+
+/* Navigation Bar */
+header {
+    position: fixed;
+    height: 5vh;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #000000;
+    color: #fff;
+    padding: 15px 0;
+    font-size: 30px;
+    /* display: flex; */
+ 
+    align-items: center;
+    justify-content: center;
+
+}
+
+nav {
+    display: flex;
+ 
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    gap: 70%;
+}
+
+nav .logo img {
+    height: 30px;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 20px;
+}
+
+nav .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    /* font-weight: bold; */
+   
+}
+
+
+
+
+/* Hero Section */
+.hero {
+    background: url('CICH-Banner_D.jpg') no-repeat center center/cover ;
+    height: 45vh;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    width: 100%;;
+    margin-top: 70px;
+}
+
+
+.hero h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+   color:  #f8f8f8;
+  margin-left: -1250px;
+   margin-top: 200px;
+   font-family: "Mukta", serif;
+   font-weight: 300;
+}
+
+
+
+.cta-button {
+    background-color: #4683d2;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-family: "Mukta", serif;
+    margin-left: -1700px;
+    font-weight: 300;
+}
+
+.cta-button:hover {
+    background-color: #4e669a;
+}
+
+.hero_footer {
+    background: url('image (10).webp') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+.hero_footer h1{
+    font-size: 3em;
+    margin-bottom: 20px;
+    color:#fafafa ;
+}
+.hero_footer p{
+    font-size: 2em;
+    margin-bottom: 20px;
+   
+}
+
+
